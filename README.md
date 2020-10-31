@@ -19,22 +19,19 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Summary ##
-  > Now you can rapidly generate customized powerpoint presentations from a template based on CSV input. No more embarrassing typos, formatting inconsistencies, or tedious updates. 
+Now you can rapidly generate customized powerpoint presentations from a template based on CSV input. No more embarrassing typos, formatting inconsistencies, or tedious updates. 
 
 ## Problem ##
-  > Many professionals, including marketers, consultants, and investment bankers, find themselves repeatedly generating very similar powerpoint presentations, each intended for a different audience. These presentations must be free of typos and inconsistencies, and they're tedious to maintain. 
+Many professionals, including marketers, consultants, and investment bankers, find themselves repeatedly generating very similar powerpoint presentations, each intended for a different audience. These presentations must be free of typos and inconsistencies, and they're tedious to maintain. 
 
 ## Solution ##
-  > This is a customized solution for one company. Once users upload a CSV, the application maps column names to fields in the powerpoint template. Users can select which rows should be made into a slide, change slide order by dragging and dropping rows, and select which fields should be included. For example, different fields will be included for internal vs. external presentations. When ready, click to download your new, customized powerpoint.
+This is a customized solution for one company. Once users upload a CSV, the application maps column names to fields in the powerpoint template. Users can select which rows should be made into a slide, change slide order by dragging and dropping rows, and select which fields should be included. For example, different fields will be included for internal vs. external presentations. When ready, click to download your new, customized powerpoint.
+
+Please contact us if you'd like us to build a customized version for your company! We are working on a feature that will allow users to add/edit/delete fields and change the formatting of the PowerPoint, but in the meantime, just tell us what you need and let us build it for you. Turnaround time is about 1 week.
+
+  > "This is such a game-changer. I used to dread making powerpoint presentations because it's just so tedious. Now, all I have to do is download a CSV file from my CRM and upload it here." - Ricardo G., Finance Professional
   
-## Quote from You ##
-  > Please contact us if you'd like us to build a customized version for your company! We are working on a feature that will allow users to add/edit/delete fields and change the formatting of the PowerPoint, but in the meantime, just tell us what you need and let us build it for you. Turnaround time is about 1 week.
-
 ## How to Get Started ##
-  > Simply import a CSV that includes the data for each slide to be included in the powerpoint: Company Name, Website, Concept(s), Met with, Risk/Opportunity, Key Figures, Brief Summary, Main Takeaways, Potential Connections. You can generate as many powerpoint presentations as you'd like with this data, simply by clicking the "download powerpoint" button. Each time, you can reorder the company rows, select different fields for inclusion, and select different companies for inclusion. 
+Simply import a CSV that includes the data for each slide to be included in the powerpoint: Company Name, Website, Concept(s), Met with, Risk/Opportunity, Key Figures, Brief Summary, Main Takeaways, Potential Connections. You can generate as many powerpoint presentations as you'd like with this data, simply by clicking the "download powerpoint" button. Each time, you can reorder the company rows, select different fields for inclusion, and select different companies for inclusion. 
 
-## Customer Quote ##
-  > "This is such a game-changer. I used to dread making powerpoint presentations because it's just so tedious. Now, all I have to do is download a CSV file from my CRM and upload it here." - Ricardo G.
-
-## Closing and Call to Action ##
-  > This product is deployed at blahblah@heroku.com. Give it a try and let us know if you have any questions!
+This product is deployed at blahblah@heroku.com. Give it a try and let us know if you have any questions!
