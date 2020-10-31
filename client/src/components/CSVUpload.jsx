@@ -10,19 +10,15 @@ class CSVUpload extends React.Component {
     this.handleOnRemoveFile = this.handleOnRemoveFile.bind(this);
   }
   handleOnDrop(data) {
-    console.log('---------------------------')
-    console.log(data)
-    console.log('---------------------------')
+    this.props.updateData(data);
   }
 
   handleOnError(err, file, inputElem, reason) {
-    console.log(err)
+    console.log(err);
   }
 
   handleOnRemoveFile(data) {
-    console.log('---------------------------')
-    console.log(data)
-    console.log('---------------------------')
+    this.props.updateData([]);
   }
 
   render() {
@@ -32,6 +28,10 @@ class CSVUpload extends React.Component {
         onError={this.handleOnError}
         addRemoveButton
         onRemoveFile={this.handleOnRemoveFile}
+        style={{}}
+        config={{
+          header: true
+        }}
       >
         <span>Drop CSV file here or click to upload.</span>
       </CSVReader>
