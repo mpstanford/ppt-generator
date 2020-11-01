@@ -10,12 +10,12 @@ for (var item of props.data) {
 
 const jsxArrayHeaders = [];
 for (var item of props.headers) {
-  jsxArrayHeaders.push(<p>item</p>)
+  jsxArrayHeaders.push(<p>{item}</p>)
 }
 
 return (
   <div>
-    <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+    <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center'}}>
       {jsxArrayHeaders}
     </div>
     {jsxArrayData}
