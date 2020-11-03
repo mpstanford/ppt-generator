@@ -64,8 +64,9 @@ const Slides = (props) => {
 
   return (
     <div>
-      <img src={logo} />
+      {props.data.length > 0 &&
       <button onClick={() => pptx.writeFile()}>Download PPT</button>
+      }
     </div>
   );
 
