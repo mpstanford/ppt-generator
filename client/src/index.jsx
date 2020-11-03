@@ -9,14 +9,21 @@ class App extends React.Component {
     super(props);
     this.state = {
       data: [],
-      headers: []
+      headers: [],
+      orderedItems: []
     }
     this.updateData = this.updateData.bind(this);
+    this.updateOrder = this.updateOrder.bind(this);
   }
 
   updateData(data) {
+    data.map((item, index) => {
+      item.data['_id'] = index;
+      return item;
+    })
     this.setState({
-      data: data
+      data: data,
+      orderedItems: data
     });
 
     if (data.length > 0) {
@@ -26,12 +33,18 @@ class App extends React.Component {
     }
   }
 
+  updateOrder(items) {
+    this.setState({
+      orderedItems: items
+    })
+  }
+
   render() {
     return (
       <>
         <CSVUpload updateData={this.updateData} />
-        <MeetingList data={this.state.data} headers={this.state.headers} />
-        <Slides data={this.state.data} />
+        <MeetingList data={this.state.data} headers={this.state.headers} updateOrder={this.updateOrder}/>
+        <Slides data={this.state.orderedItems} />
       </>
     );
   }
