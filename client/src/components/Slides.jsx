@@ -10,6 +10,9 @@ const Slides = (props) => {
 
   for (var i = 0; i < props.data.length; i++) {
     const meeting = props.data[i].data;
+    if (!props.meetingsToInclude[meeting._id]) {
+      continue;
+    }
     let slide = pptx.addSlide();
     slide.bkgd = 'FFFFFF';
 

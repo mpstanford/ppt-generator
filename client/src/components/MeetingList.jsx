@@ -28,7 +28,7 @@ const MeetingList = (props) => {
     props.updateOrder(items);
   }, [items]);
 
-  const jsxArrayHeaders = [];
+  const jsxArrayHeaders = ['Include?'];
   for (var item of props.headers) {
     jsxArrayHeaders.push(<th>{item}</th>)
   }
@@ -60,7 +60,7 @@ const MeetingList = (props) => {
             </thead>
             <tbody>
               {items.map((item, index) => (
-                <Meeting data={item.data} headers={props.headers} index={index} />
+                <Meeting data={item.data} headers={props.headers} index={index} meetingsToInclude={props.meetingsToInclude} updateMeetingsToInclude = {props.updateMeetingsToInclude} />
               ))}
               {provided.placeholder}
             </tbody>

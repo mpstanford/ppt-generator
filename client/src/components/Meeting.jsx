@@ -1,11 +1,10 @@
 import React from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import MeetingCheckbox from './MeetingCheckbox.jsx';
 
 const getItemStyle = (isDragging, draggableStyle) => ({
   userSelect: "none",
   background: isDragging ? "lightgreen" : "grey",
-
-  // styles we need to apply on draggables
   ...draggableStyle
 });
 
@@ -15,12 +14,6 @@ const Meeting = (props) => {
   const headers = props.headers;
   const charLimits = [50, 50, 50, 50, 15, 300, 500, 500, 50];
 
-  let count = 1;
-  const keyGen = () => {
-    count ++;
-    return count;
-  }
-
   const jsxArray = [];
   for (var i = 0; i < headers.length; i++) {
     let styleObj = { border: 'none', width: `${Math.floor(100/headers.length)}vw`};
@@ -29,7 +22,6 @@ const Meeting = (props) => {
     }
     jsxArray.push(<td style={styleObj}>{data[headers[i]]}</td>);
   }
-  console.log(data);
   return (
     <Draggable key={props.data._id} draggableId={`${props.data._id}`} index={props.index}>
       {(provided, snapshot) => (
@@ -42,6 +34,7 @@ const Meeting = (props) => {
             provided.draggableProps.style
           )}
         >
+          <MeetingCheckbox id={data._id} meetingsToInclude={props.meetingsToInclude} updateMeetingsToInclude = {props.updateMeetingsToInclude}/>
           {jsxArray}
         </tr>
         )

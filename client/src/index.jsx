@@ -10,20 +10,27 @@ class App extends React.Component {
     this.state = {
       data: [],
       headers: [],
-      orderedItems: []
+      orderedItems: [],
+      fieldsToInclude: {},
+      meetingsToInclude: {}
     }
     this.updateData = this.updateData.bind(this);
     this.updateOrder = this.updateOrder.bind(this);
+    this.updateFiedsToInclude = this.updateFiedsToInclude.bind(this);
+    this.updateMeetingsToInclude = this.updateMeetingsToInclude.bind(this);
   }
 
   updateData(data) {
+    const meetingsToInclude = {};
     data.map((item, index) => {
       item.data['_id'] = index;
+      meetingsToInclude[index] = true;
       return item;
     })
     this.setState({
       data: data,
-      orderedItems: data
+      orderedItems: data,
+      meetingsToInclude: meetingsToInclude
     });
 
     if (data.length > 0) {
@@ -39,12 +46,27 @@ class App extends React.Component {
     })
   }
 
+  updateMeetingsToInclude(id, bool) {
+    let meetingsToInclude = this.state.meetingsToInclude;
+    meetingsToInclude[id] = bool;
+    console.log(meetingsToInclude);
+    this.setState({
+      meetingsToInclude: meetingsToInclude
+    })
+  }
+
+  updateFiedsToInclude(obj) {
+    this.setState({
+      fieldsToInclude: obj
+    })
+  }
+
   render() {
     return (
       <>
         <CSVUpload updateData={this.updateData} />
-        <MeetingList data={this.state.data} headers={this.state.headers} updateOrder={this.updateOrder}/>
-        <Slides data={this.state.orderedItems} />
+        <MeetingList data={this.state.data} headers={this.state.headers} meetingsToInclude={this.state.meetingsToInclude} updateOrder={this.updateOrder} updateMeetingsToInclude={this.updateMeetingsToInclude} updateFieldsToInclude={this.updateFieldsToInclude}/>
+        <Slides data={this.state.orderedItems} meetingsToInclude={this.state.meetingsToInclude} />
       </>
     );
   }
