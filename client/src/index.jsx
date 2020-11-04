@@ -4,6 +4,7 @@ import Slides from './components/Slides.jsx';
 import CSVUpload from './components/CSVUpload.jsx';
 import MeetingList from './components/MeetingList.jsx';
 
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -12,13 +13,15 @@ class App extends React.Component {
       headers: [],
       orderedItems: [],
       fieldsToInclude: {},
-      meetingsToInclude: {}
+      meetingsToInclude: {},
+      presentationInfo: {}
     }
     this.updateData = this.updateData.bind(this);
     this.updateOrder = this.updateOrder.bind(this);
     this.updateFieldsToInclude = this.updateFiedsToInclude.bind(this);
     this.updateMeetingsToInclude = this.updateMeetingsToInclude.bind(this);
     this.updateContent = this.updateContent.bind(this);
+    this.updatePresentationInfo = this.updatePresentationInfo.bind(this);
   }
 
   updateData(data) {
@@ -76,20 +79,27 @@ class App extends React.Component {
         item.data[field] = newContent;
       }
     });
-    console.log(field);
-    console.log(id);
     this.setState({
       orderedItems: orderedItems
     });
+  }
 
+  updatePresentationInfo(obj) {
+    this.setState({
+      presentationInfo: obj
+    })
   }
 
   render() {
     return (
       <>
         <CSVUpload updateData={this.updateData} />
-        <MeetingList data={this.state.data} headers={this.state.headers} meetingsToInclude={this.state.meetingsToInclude} fieldsToInclude={this.state.fieldsToInclude} updateOrder={this.updateOrder} updateMeetingsToInclude={this.updateMeetingsToInclude} updateFieldsToInclude={this.updateFieldsToInclude} updateContent={this.updateContent} />
-        <Slides data={this.state.orderedItems} meetingsToInclude={this.state.meetingsToInclude} fieldsToInclude={this.state.fieldsToInclude} />
+        {this.state.data.length > 0 &&
+          <>
+            <MeetingList data={this.state.data} headers={this.state.headers} meetingsToInclude={this.state.meetingsToInclude} fieldsToInclude={this.state.fieldsToInclude} updateOrder={this.updateOrder} updateMeetingsToInclude={this.updateMeetingsToInclude} updateFieldsToInclude={this.updateFieldsToInclude} updateContent={this.updateContent} />
+            <Slides data={this.state.orderedItems} meetingsToInclude={this.state.meetingsToInclude} fieldsToInclude={this.state.fieldsToInclude} presentationInfo={this.state.presentationInfo} updatePresentationInfo={this.updatePresentationInfo} />
+          </>
+        }
       </>
     );
   }

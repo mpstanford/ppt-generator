@@ -29,9 +29,10 @@ const MeetingList = (props) => {
     props.updateOrder(items);
   }, [items]);
 
+  const displayLabels = ['Company Name', 'Website', 'Concept(s)', 'Met With', 'Risk/Opp', 'Key Figures', 'Brief Summary', 'Main Takeaways', 'Potential Connections'];
   const jsxArrayHeaders = ['Include?'];
-  for (var item of props.headers) {
-    jsxArrayHeaders.push(<FieldCheckbox field={item} fieldsToInclude={props.fieldsToInclude} updateFieldsToInclude={props.updateFieldsToInclude} />)
+  for (var i = 0; i < props.headers.length - 1; i++) {
+    jsxArrayHeaders.push(<FieldCheckbox field={props.headers[i]} displayLabel={displayLabels[i]} fieldsToInclude={props.fieldsToInclude} updateFieldsToInclude={props.updateFieldsToInclude} />)
   }
 
   return (

@@ -12,17 +12,19 @@ const Meeting = (props) => {
 
   const data = props.data;
   const headers = props.headers;
-  const charLimits = [50, 50, 50, 50, 15, 300, 500, 500, 50];
+  const charLimits = [124, 38, 116, 125, 41, 283, 595, 846, 131];
 
   const jsxArray = [];
-  for (var i = 0; i < headers.length; i++) {
+  for (var i = 0; i < headers.length - 1; i++) {
     let styleObj = { border: 'none', width: `${Math.floor(100/headers.length)}vw`};
     if (data[headers[i]].length > charLimits[i]) {
-      styleObj = { border: '3px solid red'};
+      styleObj = { backgroundColor: 'red', color: 'white'};
     }
     const field = headers[i];
     jsxArray.push(<td style={styleObj} contentEditable='true'
-    onInput={e => props.updateContent(field, data._id, e.currentTarget.textContent)}>{data[field]}</td>);
+    onBlur={e => {
+      props.updateContent(field, data._id, e.currentTarget.textContent);
+    }}>{data[field]}</td>);
   }
   return (
     <Draggable key={props.data._id} draggableId={`${props.data._id}`} index={props.index}>

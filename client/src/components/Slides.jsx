@@ -1,11 +1,19 @@
 import pptxgen from 'pptxgenjs';
 import React from 'react';
 import logo from '../images/logo.png';
+import logo_big from '../images/logo_big.png';
+import PresentationInfo from './PresentationInfo.jsx';
 
 const Slides = (props) => {
   let pptx = new pptxgen();
   pptx.layout = "LAYOUT_4x3";
   let riskOppColor;
+
+  //title slide
+  let titleSlide = pptx.addSlide();
+  titleSlide.addImage({ path: logo_big, x:0.03, y:2.73, w:4, h:0.95 });
+  titleSlide.bkgd = 'FFFFFF';
+
 
 
   for (var i = 0; i < props.data.length; i++) {
@@ -92,9 +100,15 @@ const Slides = (props) => {
 
   return (
     <div>
-      {props.data.length > 0 &&
-      <button onClick={() => pptx.writeFile()}>Download PPT</button>
-      }
+      <PresentationInfo updatePresentationInfo={props.updatePresentationInfo} presentationInfo={props.presentationInfo} />
+      <button onClick={() => {
+        console.log(props.presentationInfo.presentationName);
+        titleSlide.addText(props.presentationInfo.presentationTitle, { shape:pptx.shapes.RECTANGLE, x:0, y:3.44, w:10, h:0.49, fill:'6D6F71', align: 'right', fontFace: 'Century Gothic', fontSize: 20, color: 'FFFFFF' });
+
+        titleSlide.addText(props.presentationInfo.presentationSubtitle, {x: 1.42, y:3.96, w: 8.5, h: 0.38, fontSize: 14, fontFace: 'Century Gothic', align: 'right', color: '595959'});
+
+        pptx.writeFile(props.presentationInfo.presentationName)
+      }}>Download PPT</button>
     </div>
   );
 

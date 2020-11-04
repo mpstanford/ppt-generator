@@ -15,7 +15,7 @@ const FieldCheckbox = (props) => {
   return (
     <th>
       <input type="checkbox" checked={checked} onChange={handleCheckboxChange}></input>
-      {props.field}
+      {props.displayLabel}
     </th>
 
   );
