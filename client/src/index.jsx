@@ -18,6 +18,7 @@ class App extends React.Component {
     this.updateOrder = this.updateOrder.bind(this);
     this.updateFieldsToInclude = this.updateFiedsToInclude.bind(this);
     this.updateMeetingsToInclude = this.updateMeetingsToInclude.bind(this);
+    this.updateContent = this.updateContent.bind(this);
   }
 
   updateData(data) {
@@ -68,11 +69,26 @@ class App extends React.Component {
     })
   }
 
+  updateContent(field, id, newContent) {
+    let orderedItems = this.state.orderedItems;
+    orderedItems.map((item) => {
+      if (item.data['_id'] === id) {
+        item.data[field] = newContent;
+      }
+    });
+    console.log(field);
+    console.log(id);
+    this.setState({
+      orderedItems: orderedItems
+    });
+
+  }
+
   render() {
     return (
       <>
         <CSVUpload updateData={this.updateData} />
-        <MeetingList data={this.state.data} headers={this.state.headers} meetingsToInclude={this.state.meetingsToInclude} fieldsToInclude={this.state.fieldsToInclude} updateOrder={this.updateOrder} updateMeetingsToInclude={this.updateMeetingsToInclude} updateFieldsToInclude={this.updateFieldsToInclude}/>
+        <MeetingList data={this.state.data} headers={this.state.headers} meetingsToInclude={this.state.meetingsToInclude} fieldsToInclude={this.state.fieldsToInclude} updateOrder={this.updateOrder} updateMeetingsToInclude={this.updateMeetingsToInclude} updateFieldsToInclude={this.updateFieldsToInclude} updateContent={this.updateContent} />
         <Slides data={this.state.orderedItems} meetingsToInclude={this.state.meetingsToInclude} fieldsToInclude={this.state.fieldsToInclude} />
       </>
     );

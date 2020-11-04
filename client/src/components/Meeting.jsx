@@ -20,7 +20,9 @@ const Meeting = (props) => {
     if (data[headers[i]].length > charLimits[i]) {
       styleObj = { border: '3px solid red'};
     }
-    jsxArray.push(<td style={styleObj}>{data[headers[i]]}</td>);
+    const field = headers[i];
+    jsxArray.push(<td style={styleObj} contentEditable='true'
+    onInput={e => props.updateContent(field, data._id, e.currentTarget.textContent)}>{data[field]}</td>);
   }
   return (
     <Draggable key={props.data._id} draggableId={`${props.data._id}`} index={props.index}>

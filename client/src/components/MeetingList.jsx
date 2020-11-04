@@ -61,7 +61,7 @@ const MeetingList = (props) => {
             </thead>
             <tbody>
               {items.map((item, index) => (
-                <Meeting data={item.data} headers={props.headers} index={index} meetingsToInclude={props.meetingsToInclude} updateMeetingsToInclude = {props.updateMeetingsToInclude} />
+                <Meeting data={item.data} headers={props.headers} index={index} meetingsToInclude={props.meetingsToInclude} updateMeetingsToInclude = {props.updateMeetingsToInclude} updateContent={props.updateContent} />
               ))}
               {provided.placeholder}
             </tbody>
