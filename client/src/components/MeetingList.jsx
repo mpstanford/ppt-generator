@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import Meeting from './Meeting.jsx';
+import FieldCheckbox from './FieldCheckbox.jsx';
 
 const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list);
@@ -30,7 +31,7 @@ const MeetingList = (props) => {
 
   const jsxArrayHeaders = ['Include?'];
   for (var item of props.headers) {
-    jsxArrayHeaders.push(<th>{item}</th>)
+    jsxArrayHeaders.push(<FieldCheckbox field={item} fieldsToInclude={props.fieldsToInclude} updateFieldsToInclude={props.updateFieldsToInclude} />)
   }
 
   return (

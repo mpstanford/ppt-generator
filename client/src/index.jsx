@@ -16,13 +16,17 @@ class App extends React.Component {
     }
     this.updateData = this.updateData.bind(this);
     this.updateOrder = this.updateOrder.bind(this);
-    this.updateFiedsToInclude = this.updateFiedsToInclude.bind(this);
+    this.updateFieldsToInclude = this.updateFiedsToInclude.bind(this);
     this.updateMeetingsToInclude = this.updateMeetingsToInclude.bind(this);
   }
 
   updateData(data) {
     const meetingsToInclude = {};
+    const fieldsToInclude = {};
     data.map((item, index) => {
+      for (var key in item.data) {
+        fieldsToInclude[key] = true;
+      }
       item.data['_id'] = index;
       meetingsToInclude[index] = true;
       return item;
@@ -30,7 +34,8 @@ class App extends React.Component {
     this.setState({
       data: data,
       orderedItems: data,
-      meetingsToInclude: meetingsToInclude
+      meetingsToInclude: meetingsToInclude,
+      fieldsToInclude: fieldsToInclude
     });
 
     if (data.length > 0) {
@@ -55,9 +60,11 @@ class App extends React.Component {
     })
   }
 
-  updateFiedsToInclude(obj) {
+  updateFiedsToInclude(field, bool) {
+    let fieldsToInclude = this.state.fieldsToInclude;
+    fieldsToInclude[field] = bool;
     this.setState({
-      fieldsToInclude: obj
+      fieldsToInclude: fieldsToInclude
     })
   }
 
@@ -65,8 +72,8 @@ class App extends React.Component {
     return (
       <>
         <CSVUpload updateData={this.updateData} />
-        <MeetingList data={this.state.data} headers={this.state.headers} meetingsToInclude={this.state.meetingsToInclude} updateOrder={this.updateOrder} updateMeetingsToInclude={this.updateMeetingsToInclude} updateFieldsToInclude={this.updateFieldsToInclude}/>
-        <Slides data={this.state.orderedItems} meetingsToInclude={this.state.meetingsToInclude} />
+        <MeetingList data={this.state.data} headers={this.state.headers} meetingsToInclude={this.state.meetingsToInclude} fieldsToInclude={this.state.fieldsToInclude} updateOrder={this.updateOrder} updateMeetingsToInclude={this.updateMeetingsToInclude} updateFieldsToInclude={this.updateFieldsToInclude}/>
+        <Slides data={this.state.orderedItems} meetingsToInclude={this.state.meetingsToInclude} fieldsToInclude={this.state.fieldsToInclude} />
       </>
     );
   }
