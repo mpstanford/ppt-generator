@@ -1,19 +1,5 @@
 import React, {useState, useEffect} from 'react';
 
-// const PresentationInfo = (props) => {
-//   const [presentationName, setPresentationName] = useState('');
-//   const [presentationTitle, setPresentationTitle] = useState('');
-//   const [presentationSubtitle, setPresentationSubtitle] = useState('');
-
-//   const handleChange = (e) => {
-
-//   }
-
-//   return (
-//     <h1>presentation info goes here</h1>
-//   );
-// }
-
 class PresentationInfo extends React.Component {
   constructor(props) {
     super(props);
@@ -36,32 +22,29 @@ class PresentationInfo extends React.Component {
   render() {
     return (
       <form>
-        <label>
-          What should the file be called?
-          <input
-            name="presentationName"
-            type="text"
-            value={this.state.presentationName}
-            onChange={this.handleChange} />
-        </label>
+        <label>What should the file be called?</label>
+        <input
+          name="presentationName"
+          type="text"
+          value={this.state.presentationName}
+          onChange={this.handleChange} />
+
+        <br />
+        <label>Presentation Title (first slide): </label>
+        <input
+          name="presentationTitle"
+          type="text"
+          value={this.state.presentationTitle}
+          onChange={this.handleChange} />
+
           <br />
-        <label>
-            Presentation Title (first slide)
-            <input
-              name="presentationTitle"
-              type="text"
-              value={this.state.presentationTitle}
-              onChange={this.handleChange} />
-        </label>
-          <br />
-        <label>
-            Presentation Subtitle (first slide)
-            <input
-              name="presentationSubtitle"
-              type="text"
-              value={this.state.presentationSubtitle}
-              onChange={this.handleChange} />
-        </label>
+        <label>Presentation Subtitle (first slide):</label>
+        <input
+          name="presentationSubtitle"
+          type="text"
+          value={this.state.presentationSubtitle}
+          onChange={this.handleChange} />
+
       </form>
     );
   }

@@ -58,7 +58,6 @@ class App extends React.Component {
   updateMeetingsToInclude(id, bool) {
     let meetingsToInclude = this.state.meetingsToInclude;
     meetingsToInclude[id] = bool;
-    console.log(meetingsToInclude);
     this.setState({
       meetingsToInclude: meetingsToInclude
     })

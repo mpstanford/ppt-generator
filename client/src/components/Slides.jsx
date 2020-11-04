@@ -99,10 +99,9 @@ const Slides = (props) => {
   }
 
   return (
-    <div>
+    <div id="presentationInfo">
       <PresentationInfo updatePresentationInfo={props.updatePresentationInfo} presentationInfo={props.presentationInfo} />
       <button onClick={() => {
-        console.log(props.presentationInfo.presentationName);
         titleSlide.addText(props.presentationInfo.presentationTitle, { shape:pptx.shapes.RECTANGLE, x:0, y:3.44, w:10, h:0.49, fill:'6D6F71', align: 'right', fontFace: 'Century Gothic', fontSize: 20, color: 'FFFFFF' });
 
         titleSlide.addText(props.presentationInfo.presentationSubtitle, {x: 1.42, y:3.96, w: 8.5, h: 0.38, fontSize: 14, fontFace: 'Century Gothic', align: 'right', color: '595959'});

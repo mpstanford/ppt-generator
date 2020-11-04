@@ -12,9 +12,8 @@ const reorder = (list, startIndex, endIndex) => {
 };
 
 const getListStyle = isDraggingOver => ({
-  background: isDraggingOver ? "lightblue" : "lightgrey",
+  background: isDraggingOver ? "#96ACB7" : "#96ACB7",
   padding: '5px',
-  width: '100 vw'
 });
 
 const MeetingList = (props) => {
@@ -56,7 +55,7 @@ const MeetingList = (props) => {
             style={getListStyle(snapshot.isDraggingOver)}
           >
             <thead>
-              <tr>
+              <tr style={{fontWeight: 'bold', textAlign: 'center'}}>
               {jsxArrayHeaders}
               </tr>
             </thead>

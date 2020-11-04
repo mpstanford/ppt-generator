@@ -4,7 +4,8 @@ import MeetingCheckbox from './MeetingCheckbox.jsx';
 
 const getItemStyle = (isDragging, draggableStyle) => ({
   userSelect: "none",
-  background: isDragging ? "lightgreen" : "grey",
+  background: isDragging ? "#1E5071" : "#FFFFFF",
+  color: isDragging ? "white" : "black",
   ...draggableStyle
 });
 
@@ -16,7 +17,7 @@ const Meeting = (props) => {
 
   const jsxArray = [];
   for (var i = 0; i < headers.length - 1; i++) {
-    let styleObj = { border: 'none', width: `${Math.floor(100/headers.length)}vw`};
+    let styleObj = { border: 'none'};
     if (data[headers[i]].length > charLimits[i]) {
       styleObj = { backgroundColor: 'red', color: 'white'};
     }
